@@ -1,12 +1,10 @@
-
+import GlobalStyle from "./styles/global-styles";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+    </>
   );
 }
 
