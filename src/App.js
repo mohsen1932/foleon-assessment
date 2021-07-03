@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 
 import List from "./pages/list";
+import NotFound from "./pages/404";
 import { store } from "./redux/store";
 import GlobalStyle from "./styles/global-styles";
 
@@ -18,7 +19,7 @@ function App() {
             {/* <Detail /> */}
           </Route>
           <Route path="*">
-            {/* <NotFound /> */}
+            <NotFound />
           </Route>
         </Switch>
       </BrowserRouter>
