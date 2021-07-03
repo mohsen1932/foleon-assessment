@@ -90,13 +90,30 @@ export function* getCats() {
 export function* getCatsSaga() {
   yield takeLatest(constants.CATEGORY_GET, getCats);
 }
-
-
+export function* getOnePublication(action) {
+  try {
+    yield put(actions.singleLoading(true));
+    yield call(checkAuth);
+    const response = yield call(services.getOnePublication, action.payload);
+    yield put(actions.setOne(response.data));
+  } catch (error) {
+    yield put(actions.singleFailure(true, error.message));
+    if (error.response.status === 404) {
+      window.location = "/404";
+    }
+  } finally {
+    yield put(actions.singleLoading(false));
+  }
+}
+export function* getOnePublicationSaga() {
+  yield takeLatest(constants.SINGLE_GET, getOnePublication);
+}
 
 const Sagas = [
   getPublicationsSaga(),
   searchPublicationsSaga(),
   getCatsSaga(),
   filterPublicationsSaga(),
+  getOnePublicationSaga(),
 ];
 export default Sagas;

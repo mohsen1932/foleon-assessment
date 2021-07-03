@@ -3,6 +3,7 @@ import { Provider as ReduxProvider } from "react-redux";
 
 import List from "./pages/list";
 import NotFound from "./pages/404";
+import Detail from "./pages/detail";
 import { store } from "./redux/store";
 import GlobalStyle from "./styles/global-styles";
 
@@ -16,7 +17,7 @@ function App() {
             <List />
           </Route>
           <Route path="/publication/:id">
-            {/* <Detail /> */}
+            <Detail />
           </Route>
           <Route path="*">
             <NotFound />
